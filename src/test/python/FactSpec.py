@@ -25,6 +25,9 @@ class FactorialSpec(unittest.TestCase):
     def test_five(self):
         self.assertEqual(120, fact(5))
 
+    def test_six(self):
+        self.assertEqual(720, fact(6))
+
     def test_fifty(self):
         self.assertEqual(30414093201713378043612608166064768844377641568960512000000000000,
                          fact(50))
