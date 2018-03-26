@@ -1,5 +1,5 @@
 import unittest
-from src.main.python.Factorial import fact
+from py_scratch.Factorial import fact
 
 
 class FactorialSpec(unittest.TestCase):

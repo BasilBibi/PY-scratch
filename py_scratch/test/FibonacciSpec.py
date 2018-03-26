@@ -1,5 +1,5 @@
 import unittest
-from src.main.python.Fibonacci import fib
+from py_scratch.Fibonacci import fib
 
 
 class FibSpec(unittest.TestCase):
