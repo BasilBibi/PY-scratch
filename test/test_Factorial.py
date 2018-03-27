@@ -22,7 +22,8 @@ class FactorialSpec(unittest.TestCase):
     def test_four(self):
         self.assertEqual(24, fact(4))
 
-    def test_five(self):
+    def test_five_lala_merge_conflict(self):
+        #Added a useless comment too ha ha!
         self.assertEqual(120, fact(5))
 
     def test_six(self):
@@ -30,6 +31,9 @@ class FactorialSpec(unittest.TestCase):
 
     def test_seven(self):
         self.assertEqual(5040, fact(7))
+
+    def test_nine(self):
+        self.assertEqual(362880, fact(9))
 
     def test_fifty(self):
         self.assertEqual(30414093201713378043612608166064768844377641568960512000000000000,
