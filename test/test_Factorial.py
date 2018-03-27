@@ -30,7 +30,10 @@ class FactorialSpec(unittest.TestCase):
 
     def test_eighth_Factorial_term(self):
         self.assertEqual(5040, fact(7))
-
+        
+    def test_nine(self):
+        self.assertEqual(362880, fact(9))
+ 
     def test_fifty_first_Factorial_term(self):
         self.assertEqual(30414093201713378043612608166064768844377641568960512000000000000,
                          fact(50))
