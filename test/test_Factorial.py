@@ -4,38 +4,37 @@ from py_scratch.Factorial import fact
 
 class FactorialSpec(unittest.TestCase):
 
-    def test_lessthan_zero(self):
+    def test_lessthan_zero_term(self):
         self.assertEqual(0, fact(-1))
 
-    def test_zero(self):
+    def test_first_Factorial_term(self):
         self.assertEqual(0, fact(0))
 
-    def test_one(self):
+    def test_second_Factorial_term(self):
         self.assertEqual(1, fact(1))
 
-    def test_two(self):
+    def test_third_Factorial_term(self):
         self.assertEqual(2, fact(2))
 
-    def test_three(self):
+    def test_fourth_Factorial_term(self):
         self.assertEqual(6, fact(3))
 
-    def test_four(self):
+    def test_fifth_Factorial_term(self):
         self.assertEqual(24, fact(4))
 
-    def test_five_lala_merge_conflict(self):
-        #Added a useless comment too ha ha!
+    def test_sixth_Factorial_term(self):
         self.assertEqual(120, fact(5))
 
-    def test_six(self):
+    def test_seventh_Factorial_term(self):
         self.assertEqual(720, fact(6))
 
-    def test_seven(self):
+    def test_eighth_Factorial_term(self):
         self.assertEqual(5040, fact(7))
-
+        
     def test_nine(self):
         self.assertEqual(362880, fact(9))
-
-    def test_fifty(self):
+ 
+    def test_fifty_first_Factorial_term(self):
         self.assertEqual(30414093201713378043612608166064768844377641568960512000000000000,
                          fact(50))
 
