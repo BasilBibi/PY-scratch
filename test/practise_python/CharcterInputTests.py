@@ -1,6 +1,5 @@
 import unittest
-from test.TestBase import *
-from py_scratch.practise_python.character_input import calculate_year_of_centenary
+from py_scratch.practise_python.Centenary import calculate_year_of_centenary
 
 
 class GeneralTests(unittest.TestCase):
