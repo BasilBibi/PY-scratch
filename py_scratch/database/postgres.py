@@ -3,6 +3,8 @@ import psycopg2
 
 def query_PostGres():
 
+    conn = None
+
     try:
         conn = psycopg2.connect("dbname=testdb user=postgres password=postgres")
         cur = conn.cursor()
