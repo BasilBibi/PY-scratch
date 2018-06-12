@@ -78,8 +78,6 @@ class FunctionalProgrammingTests(unittest.TestCase):
         def square(x): return x*x
         print( [square(x) for x in values] )
 
-        set(2,3,4,).union( set(1,2,3) )
-
 
 if __name__ == '__main__':
     unittest.main()
