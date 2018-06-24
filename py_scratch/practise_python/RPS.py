@@ -1,8 +1,7 @@
 draw, rock, paper, scissors = (-1, 0, 1, 2)
-
 rps_tokens = {'rock': rock, 'paper': paper, 'scissors': scissors}
-
-result_lookup = {v:k for k, v in rps_tokens.items()}
+result_lookup = { v: k for k, v in rps_tokens.items() }
+result_lookup.update({-1: 'draw'})
 
 
 def get_player_choice(player_name):
@@ -20,15 +19,11 @@ def is_valid_choice(c):
 
 
 def make_error_message(c, player_name):
-    keys = ', '.join( rps_tokens.keys() )
+    keys = ', '.join(rps_tokens.keys())
     return f'"{c}" is not a valid choice. Choose from {keys}. Try again {player_name}.'
 
 
-def rps_math(p1, p2):
-    outcome = [draw, p1, p2]
-    return outcome[(p1 - p2) % 3]
-
-
-
-
-
+def play_rps(p1, p2):
+    result_lookup_table = [draw, p1, p2]
+    result = (p1 - p2) % 3
+    return result_lookup_table[ result ]

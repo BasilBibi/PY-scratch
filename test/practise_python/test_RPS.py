@@ -5,31 +5,31 @@ from py_scratch.practise_python.RPS import *
 class RPSTests(unittest.TestCase):
 
     def test_rock_rock(self):
-        self.assertEqual(draw, rps_math(rock, rock))
+        self.assertEqual(draw, play_rps(rock, rock))
 
     def test_rock_paper(self):
-        self.assertEqual(paper, rps_math(rock, paper))
+        self.assertEqual(paper, play_rps(rock, paper))
 
     def test_rock_scissors(self):
-        self.assertEqual(rock, rps_math(rock, scissors))
+        self.assertEqual(rock, play_rps(rock, scissors))
 
     def test_paper_paper(self):
-        self.assertEqual(draw, rps_math(paper, paper))
+        self.assertEqual(draw, play_rps(paper, paper))
 
     def test_paper_rock(self):
-        self.assertEqual(paper, rps_math(paper, rock))
+        self.assertEqual(paper, play_rps(paper, rock))
 
     def test_paper_scissors(self):
-        self.assertEqual(scissors, rps_math(paper, scissors))
+        self.assertEqual(scissors, play_rps(paper, scissors))
 
     def test_scissors_scissors(self):
-        self.assertEqual(draw, rps_math(scissors, scissors))
+        self.assertEqual(draw, play_rps(scissors, scissors))
 
     def test_scissors_rock(self):
-        self.assertEqual(rock, rps_math(scissors, rock))
+        self.assertEqual(rock, play_rps(scissors, rock))
 
     def test_scissors_paper(self):
-        self.assertEqual(scissors, rps_math(scissors, paper))
+        self.assertEqual(scissors, play_rps(scissors, paper))
 
 
     def test_rock_valid_player_choice(self):
