@@ -31,7 +31,7 @@ class FunctionalProgrammingTests(unittest.TestCase):
         # Using `lambda` (new way).
         new_add = lambda a, b: a + b
 
-        old_add(10, 5) == new_add(10, 5)
+        print(f'lambda operation returns same result as def : {old_add(10,5) == new_add(10,5)}')
 
         print(new_add(10,5))
 
@@ -51,7 +51,7 @@ class FunctionalProgrammingTests(unittest.TestCase):
         # a list data structure.
         even = list(filter(lambda x: x % 2 == 0, values))
 
-        print(even)
+        print(f'Filter even numbers using lambda : {even}')
 
     def test_reduce(self):
         from functools import reduce
@@ -59,14 +59,14 @@ class FunctionalProgrammingTests(unittest.TestCase):
         values = [1, 2, 3, 4]
 
         summed = reduce(lambda a, b: a + b, values)
-        print(summed)
+        print(f'Using functools reduce {summed}')
 
     def test_list_comprehensions(self):
         values = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
         # Map.
         add_10 = [x + 10 for x in values]
-        print(add_10)
+        print(f'Lisyt add_10')
 
         # Filter.
         even = [x for x in values if x % 2 == 0]
