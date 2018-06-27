@@ -12,11 +12,11 @@ class GeneralTests(unittest.TestCase):
 
     def test_with_list_intersection_1(self):
         expected = {1, 2, 3, 5, 8, 13}
-        self.assertEqual( expected, list_intersection_1(a, b) )
+        self.assertEqual(expected, list_intersection(a, b))
 
     def test_with_list_intersection_2(self):
         expected = {1, 2, 3, 5, 8, 13}
-        self.assertEqual( expected, list_intersection_2(a, b) )
+        self.assertEqual(expected, list_intersection_with_ampersand(a, b))
 
     def test_list_difference(self):
         expected = {21, 34, 55, 89}

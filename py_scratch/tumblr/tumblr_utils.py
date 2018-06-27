@@ -19,6 +19,9 @@ client = pytumblr.TumblrRestClient(
 d = client.info()
 print(d)
 
+posts = client.posts()
+print()
+
 results = client.tagged(tag="overwatch",  before=1300000000, limit=20, filter='raw')
 for result in results:
     print(result['id'], result['timestamp'], result['date'], result['blog_name'], result['tags'])

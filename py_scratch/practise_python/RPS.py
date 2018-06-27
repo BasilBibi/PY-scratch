@@ -1,6 +1,9 @@
 draw, rock, paper, scissors = (-1, 0, 1, 2)
+
 rps_tokens = {'rock': rock, 'paper': paper, 'scissors': scissors}
+
 result_lookup = { v: k for k, v in rps_tokens.items() }
+
 result_lookup.update({-1: 'draw'})
 
 

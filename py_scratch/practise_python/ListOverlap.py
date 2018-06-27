@@ -7,13 +7,13 @@ def get_list_overlap(a, b):
     return result
 
 
-def list_intersection_1(a, b):
+def list_intersection(a, b):
     set_a = set(a)
     set_b = set(b)
     return set_a.intersection(set_b)
 
 
-def list_intersection_2(a, b):
+def list_intersection_with_ampersand(a, b):
     set_a = set(a)
     set_b = set(b)
     return set_a & set_b
