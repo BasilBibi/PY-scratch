@@ -5,10 +5,8 @@ def get_file_path(fn):
 
 def get_file_contents(fn):
     f = get_file_path(fn)
-    fh = open(f)
-    data = fh.read()
-    fh.close()
-    return data
+    with open(f,'r') as fh:
+        return fh.read()
 
 
 def strip_cr_lf(s): return s.replace("\n", "").replace("\r", "")

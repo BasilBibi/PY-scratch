@@ -28,10 +28,10 @@ class PrimalityTests(unittest.TestCase):
     def test_16769024(self):
         self.assertFalse( is_prime(16769024))
 
-    def test_1073676287(self):
+    def test_large_prime_1073676287(self):
         self.assertTrue( is_prime(1073676287))
 
-    def test_1298074214633706835075030044377088(self):
+    def test_very_large_even_number_1298074214633706835075030044377088(self):
         self.assertFalse( is_prime(1298074214633706835075030044377088))
 
 
