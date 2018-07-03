@@ -39,9 +39,9 @@ class HangMan:
         self.incr_guess_count(letter)
         self.used_letters.add(letter)
 
-        for idx, l in enumerate(self.word):
-            if l == letter:
-                self.current_game_state[idx] = l
+        for idx, word_letter in enumerate(self.word):
+            if letter == word_letter:
+                self.current_game_state[idx] = word_letter
 
         return self.get_current_game_state()
 
