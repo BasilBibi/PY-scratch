@@ -31,7 +31,8 @@ class GeneralTests(unittest.TestCase):
             count_of_word = word_histo.get(word, 0)
             word_histo[word] = count_of_word + 1
 
-        print(longest_word, word_histo[longest_word])
+        self.assertTrue(longest_word == 'NORTHUMBERLAND')
+        self.assertTrue( word_histo[longest_word] == 2)
 
 
 if __name__ == '__main__':

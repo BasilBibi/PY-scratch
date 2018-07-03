@@ -1,7 +1,7 @@
 import unittest
 
 
-class FunctionalProgrammingTests(unittest.TestCase):
+class FunctionalProgrammingTests:
 
     def test_curry(self):
         def g(*args):
@@ -66,7 +66,7 @@ class FunctionalProgrammingTests(unittest.TestCase):
 
         # Map.
         add_10 = [x + 10 for x in values]
-        print(f'Lisyt add_10')
+        print(f'List add_10')
 
         # Filter.
         even = [x for x in values if x % 2 == 0]
@@ -78,6 +78,3 @@ class FunctionalProgrammingTests(unittest.TestCase):
         def square(x): return x*x
         print( [square(x) for x in values] )
 
-
-if __name__ == '__main__':
-    unittest.main()
