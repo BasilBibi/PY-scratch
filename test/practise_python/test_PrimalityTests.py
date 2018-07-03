@@ -28,6 +28,7 @@ class PrimalityTests(unittest.TestCase):
     def test_16769024(self):
         self.assertFalse( is_prime(16769024))
 
+    @unittest.skip("Runs for over a minute")
     def test_large_prime_1073676287(self):
         self.assertTrue( is_prime(1073676287))
 
