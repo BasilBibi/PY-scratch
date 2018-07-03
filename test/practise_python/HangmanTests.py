@@ -29,7 +29,7 @@ class HangmanTests(unittest.TestCase):
     def test_construction(self):
         self.assertEqual(0, hangman.bad_guess_count)
         self.assertEqual(['A', 'B', 'A', 'L', 'O', 'N', 'E'], hangman.word)
-        self.assertEqual([('A', '-'), ('B', '-'), ('A', '-'), ('L', '-'), ('O', '-'), ('N', '-'), ('E', '-')], hangman.current_game_state)
+        self.assertEqual(['-', '-', '-', '-', '-', '-', '-'], hangman.current_game_state)
         self.assertEqual( set(), hangman.used_letters)
 
     def test_get_current_game_state_at_start(self):
@@ -83,16 +83,16 @@ class HangmanTests(unittest.TestCase):
         mock_scrabble_words.get_random_word.side_effect = ['ABALONE']
         hangman = HangMan(mock_scrabble_words)
         hangman.guess_letter('Z')
-        self.assertTrue( hangman.bad_guess_count == 1)
+        self.assertTrue(hangman.bad_guess_count == 1)
 
     def test_used_letters_does_not_increment_for_repeats(self):
         mock_scrabble_words = MagicMock()
         mock_scrabble_words.get_random_word.side_effect = ['ABALONE']
         hangman = HangMan(mock_scrabble_words)
         hangman.guess_letter('A')
-        self.assertTrue( hangman.bad_guess_count == 0 )
+        self.assertTrue(hangman.bad_guess_count == 0)
         hangman.guess_letter('A')
-        self.assertTrue( hangman.bad_guess_count == 0 )
+        self.assertTrue(hangman.bad_guess_count == 0)
 
 
 if __name__ == '__main__':

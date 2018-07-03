@@ -27,27 +27,22 @@ class HangMan:
     def __init__(self, scrabbleWords, allowed_guesses=10):
         self.scrabbleWords = scrabbleWords
         self.word = [letter for letter in scrabbleWords.get_random_word()]
-        self.bad_guess_count = 0
-        blank = ['-' for l in self.word]
-        self.current_game_state = list(zip(self.word, blank))
+        self.current_game_state = list('-' * len(self.word))
         self.used_letters = set()
         self.allowed_guesses = allowed_guesses
+        self.bad_guess_count = 0
 
     def get_current_game_state(self):
-        guess = [b for a,b in self.current_game_state]
-        return ''.join(guess)
+        return ''.join(self.current_game_state)
 
     def guess_letter(self, letter):
         self.incr_guess_count(letter)
-
         self.used_letters.add(letter)
-        sorted(self.used_letters, reverse=False)
 
-        def rep(a,b):
-            if a == letter: return a
-            else: return b
+        for idx, l in enumerate(self.word):
+            if l == letter:
+                self.current_game_state[idx] = l
 
-        self.current_game_state = [(a, rep(a, b)) for a, b in self.current_game_state]
         return self.get_current_game_state()
 
     def incr_guess_count(self, letter):
