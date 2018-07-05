@@ -24,9 +24,8 @@ class ScrabbleWords:
 
 class HangMan:
 
-    def __init__(self, scrabbleWords, allowed_guesses=10):
-        self.scrabbleWords = scrabbleWords
-        self.word = [letter for letter in scrabbleWords.get_random_word()]
+    def __init__(self, scrabble_words, allowed_guesses=10):
+        self.word = list(scrabble_words.get_random_word())
         self.current_game_state = list('-' * len(self.word))
         self.used_letters = set()
         self.allowed_guesses = allowed_guesses
