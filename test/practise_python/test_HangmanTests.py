@@ -32,6 +32,16 @@ class HangmanTests(unittest.TestCase):
         self.assertEqual(['-', '-', '-', '-', '-', '-', '-'], hangman.current_game_state)
         self.assertEqual( set(), hangman.used_letters)
 
+    def test_input_is_a_letter(self):
+        self.assertTrue( HangMan.is_valid_letter('A'))
+        self.assertTrue( HangMan.is_valid_letter('Z'))
+
+    def test_input_is_not_a_letter(self):
+        self.assertFalse( HangMan.is_valid_letter('1'))
+        self.assertFalse( HangMan.is_valid_letter(';'))
+        self.assertFalse(HangMan.is_valid_letter(''))
+        self.assertFalse(HangMan.is_valid_letter(None))
+
     def test_get_current_game_state_at_start(self):
         self.assertEqual('-------', hangman.get_current_game_state())
 

@@ -22,13 +22,14 @@ class ScrabbleWords:
         return word in self.sowpods
 
 
+# Assumes that input letter is uppercase
 class HangMan:
 
-    def __init__(self, scrabble_words, allowed_guesses=10):
+    def __init__(self, scrabble_words, bad_guess_limit=10):
         self.word = list(scrabble_words.get_random_word())
         self.current_game_state = list('-' * len(self.word))
         self.used_letters = set()
-        self.allowed_guesses = allowed_guesses
+        self.bad_guess_limit = bad_guess_limit
         self.bad_guess_count = 0
 
     def get_current_game_state(self):
@@ -42,7 +43,12 @@ class HangMan:
             if letter == word_letter:
                 self.current_game_state[idx] = word_letter
 
-        return self.get_current_game_state()
+    @staticmethod
+    def is_valid_letter(letter):
+        if letter is None or letter == '':
+            return False
+        ascii = ord(letter)
+        return ascii >= 65 and ascii <= 95
 
     def incr_guess_count(self, letter):
         if letter not in self.used_letters and letter not in self.word:
@@ -52,5 +58,4 @@ class HangMan:
         return self.get_current_game_state() == ''.join(self.word)
 
     def is_game_over(self):
-        return self.bad_guess_count == self.allowed_guesses or self.has_won()
-
+        return self.bad_guess_count == self.bad_guess_limit or self.has_won()
