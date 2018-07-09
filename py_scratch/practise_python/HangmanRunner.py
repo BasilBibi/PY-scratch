@@ -13,7 +13,7 @@ while True:
             if hangman.is_game_over():
                 if hangman.has_won():
                     print(f'{hangman.get_current_game_state()} : {hangman.bad_guess_count}')
-                    print(f'\nYou win! {hangman.bad_guess_count} bad guesses.')
+                    print(f'\nYou win!')
                     break
                 else:
                     print(''.join(hangman.word))
