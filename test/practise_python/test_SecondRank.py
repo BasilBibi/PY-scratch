@@ -7,21 +7,21 @@ class SecondRankTests(unittest.TestCase):
 
     def test_normal_list(self):
         l = [1,3,4,7,9,8]
-        self.assertEquals(8, get_second_largest(l))
+        self.assertEqual(8, get_second_largest(l))
 
     def test_normal_list_with_negatives(self):
         l = [1,-3,-4,-7,-9,-8]
-        self.assertEquals(-3, get_second_largest(l))
+        self.assertEqual(-3, get_second_largest(l))
 
     def test_list_all_equal(self):
         l = [1,1]
-        self.assertEquals( None, get_second_largest(l))
+        self.assertEqual( None, get_second_largest(l))
 
     def test_pass_none(self):
-        self.assertEquals( None, get_second_largest(None) )
+        self.assertEqual( None, get_second_largest(None) )
 
     def test_pass_empty(self):
-        self.assertEquals( None, get_second_largest(None) )
+        self.assertEqual( None, get_second_largest(None) )
 
 
 if __name__ == '__main__':
