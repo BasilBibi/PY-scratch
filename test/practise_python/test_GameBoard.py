@@ -38,10 +38,6 @@ class GameBoardTests(unittest.TestCase):
 
         g3x3 = GameBoard(3, 'X')
 
-        game = [['X', 'X', 'X'],
-                ['X', 'X', 'X'],
-                ['X', 'X', 'X']]
-
         self.assertEqual('''
  --- --- ---
 | X | X | X |
@@ -58,6 +54,12 @@ class GameBoardTests(unittest.TestCase):
         self.assertEqual( [['X', ' ', ' '], [' ', ' ', ' '], [' ', ' ', ' ']], g3x3.board)
         g3x3.set(2, 1, 'Y')
         self.assertEqual([['X', ' ', ' '], [' ', ' ', ' '], [' ', 'Y', ' ']], g3x3.board)
+
+    def test_is_free(self):
+        g3x3 = GameBoard(3)
+        self.assertTrue(g3x3.is_free(0, 0))
+        g3x3.set(0, 0, 'X')
+        self.assertFalse(g3x3.is_free(0, 0))
 
 
 if __name__ == '__main__':

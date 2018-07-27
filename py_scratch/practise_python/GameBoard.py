@@ -2,6 +2,7 @@ class GameBoard:
 
     def __init__(self, size, init_char=' '):
         self.size = size
+        self.init_char = init_char
         self.board = __class__.make_board(size, init_char)
 
     @staticmethod
@@ -29,4 +30,8 @@ class GameBoard:
                + '\n'
 
     def set(self, row, col, piece=' '):
-        self.board[row][col] = piece
+        if self.is_free(row, col):
+            self.board[row][col] = piece
+
+    def is_free(self, row, col):
+        return self.board[row][col] == self.init_char
