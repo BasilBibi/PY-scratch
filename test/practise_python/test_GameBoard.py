@@ -4,6 +4,10 @@ from py_scratch.practise_python.GameBoard import GameBoard
 
 class GameBoardTests(unittest.TestCase):
 
+    def test_make_cols(self):
+        cols = ['A', 'B', 'C']
+        self.assertEqual( cols, GameBoard.make_cols(3) )
+
     def test_1x1_construction(self):
         g1x1 = GameBoard(1, 'X')
         self.assertEqual(1, g1x1.size)
@@ -50,16 +54,32 @@ class GameBoardTests(unittest.TestCase):
 
     def test_set(self):
         g3x3 = GameBoard(3)
-        g3x3.set(0, 0, 'X')
+        g3x3.set('A', 0, 'X')
         self.assertEqual( [['X', ' ', ' '], [' ', ' ', ' '], [' ', ' ', ' ']], g3x3.board)
-        g3x3.set(2, 1, 'Y')
+        g3x3.set('B', 2, 'Y')
         self.assertEqual([['X', ' ', ' '], [' ', ' ', ' '], [' ', 'Y', ' ']], g3x3.board)
 
     def test_is_free(self):
         g3x3 = GameBoard(3)
-        self.assertTrue(g3x3.is_free(0, 0))
-        g3x3.set(0, 0, 'X')
-        self.assertFalse(g3x3.is_free(0, 0))
+        self.assertTrue(g3x3.is_free('A', 0))
+        g3x3.set('A', 0, 'X')
+        self.assertFalse(g3x3.is_free('A', 0))
+
+    def test_valid_coords(self):
+        g3x3 = GameBoard(3)
+        self.assertTrue(g3x3.is_valid_coords('A', 0))
+        self.assertTrue(g3x3.is_valid_coords('A', 2))
+        self.assertTrue(g3x3.is_valid_coords('C', 0))
+        self.assertTrue(g3x3.is_valid_coords('C', 2))
+        self.assertFalse(g3x3.is_valid_coords('A', 5))
+        self.assertFalse(g3x3.is_valid_coords('Z', 0))
+        self.assertFalse(g3x3.is_valid_coords('0', 0))
+        self.assertFalse(g3x3.is_valid_coords('0', 5))
+        self.assertFalse(g3x3.is_valid_coords('Z', 5))
+
+    def test_ascii_offset(self):
+        g3x3 = GameBoard(3)
+        self.assertEqual(65, g3x3.ascii_offset)
 
 
 if __name__ == '__main__':
