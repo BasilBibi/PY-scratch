@@ -1,5 +1,5 @@
 import unittest
-from py_scratch.udemy_oo.sect3.MaxSizeList import MaxSizeList
+from py_scratch.udemy_oo.section3.MaxSizeList import MaxSizeList
 
 
 class MaxSizeListTests(unittest.TestCase):
