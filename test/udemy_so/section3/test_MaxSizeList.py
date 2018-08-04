@@ -40,6 +40,14 @@ class MaxSizeListTests(unittest.TestCase):
 
         self.assertNotEqual( copy , msl.get_list())
 
+    def test_negative_max_size(self):
+        with self.assertRaises(ValueError):
+            MaxSizeList(-1)
+
+    def test_invalid_max_size(self):
+        with self.assertRaises(TypeError):
+            MaxSizeList('NOT AN INT')
+
 
 if __name__ == '__main__':
     unittest.main()

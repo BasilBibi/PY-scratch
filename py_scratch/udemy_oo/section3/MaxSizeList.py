@@ -1,8 +1,12 @@
 class MaxSizeList:
 
     def __init__(self, max_size=0):
-        self.internal_list = []
-        self.max_size = max_size
+        if max_size < 0:
+            raise ValueError( f'max_size {max_size} cannot be < 0' )
+            self.internal_list = None
+        else:
+            self.internal_list = []
+            self.max_size = max_size
 
     def push(self, element):
         self.internal_list.append(element)
