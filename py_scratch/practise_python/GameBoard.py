@@ -6,8 +6,8 @@ class GameBoard:
     def __init__(self, size, init_char=' '):
         self.size = size
         self.init_char = init_char
-        self.board = __class__.make_board(size, init_char)
-        self.column_names = __class__.make_cols(size)
+        self.board = GameBoard.make_board(size, init_char)
+        self.column_names = GameBoard.make_cols(size)
 
     @staticmethod
     def make_board(size, init_char):
@@ -63,23 +63,46 @@ class GameBoard:
         return is_valid_col(col_index) and is_valid_row(row)
 
 
+from collections import namedtuple
+
+RowPopulation = namedtuple('RowPopulation', 'row population')
+ColPopulation = namedtuple('ColPopulation', 'col population')
+DiagPopulation = namedtuple('DiagPopulation', 'diag population')
+
+
 class TicTakToe(GameBoard):
 
     def __init__(self):
         super().__init__(size=3)
 
+    def winning_row_set(self, board):
+        row_pops = self.get_row_sets(board)
+        return [rp for rp in row_pops if self.is_valid_population(rp.population)]
+
     @staticmethod
     def get_row_sets(board):
-        return [set(e) for e in board]
+        return [RowPopulation(i, set(e)) for i, e in enumerate(board)]
+
+    def is_valid_population(self, pop):
+        return len(pop) == 1 and pop != set(self.init_char)
+
+    def winning_col_set(self, board):
+        col_pops = self.get_col_sets(board)
+        return [cp for cp in col_pops if self.is_valid_population(cp.population)]
 
     @staticmethod
     def get_col_sets(board):
-        return __class__.get_row_sets(
-            list(zip(board[0], board[1], board[2]))
-        )
+        zipped = list(zip(board[0], board[1], board[2]))
+        return [ColPopulation(i, set(e)) for i, e in enumerate(zipped)]
+
+    def get_winning_diag_set(self, board):
+        diagPops = self.get_diag_sets(board)
+        return [diag for diag in diagPops if self.is_valid_population(diag.population)]
 
     @staticmethod
     def get_diag_sets(board):
-        d1 = [board[0][0],board[0][1],board[0][2]]
-        d2 = [board[0][2],board[1][1],board[2][0]]
-        return __class__.get_row_sets([d1, d2])
+        fwd_slash = {board[0][2], board[1][1], board[2][0]}
+        fwd = DiagPopulation('FwdSlash', fwd_slash)
+        back_slash ={board[0][0], board[0][1], board[0][2]}
+        bk = DiagPopulation('BkSlash', back_slash)
+        return [fwd, bk]
