@@ -54,7 +54,7 @@ class GameBoardTests(unittest.TestCase):
 
     def test_set(self):
         g3x3 = GameBoard(3)
-        g3x3.set('A', 0, 'X')
+        g3x3.set(col='A', row=0, piece='X')
         self.assertEqual( [['X', ' ', ' '], [' ', ' ', ' '], [' ', ' ', ' ']], g3x3.board)
         g3x3.set('B', 2, 'Y')
         self.assertEqual([['X', ' ', ' '], [' ', ' ', ' '], [' ', 'Y', ' ']], g3x3.board)
