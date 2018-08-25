@@ -2,6 +2,7 @@
 
 count = 50
 
+
 class InstanceCounter:
     count = 0
 
