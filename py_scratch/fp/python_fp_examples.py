@@ -1,4 +1,3 @@
-
 def test_curry():
     def g(*args):
         myArgs = []
@@ -77,4 +76,3 @@ def test_list_comprehensions():
 
     def square(x): return x*x
     print([square(x) for x in values])
-
