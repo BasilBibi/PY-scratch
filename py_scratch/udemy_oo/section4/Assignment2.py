@@ -19,8 +19,6 @@ class WriteFile(ABC):
 
 
 class LogFile(WriteFile):
-    def __init__(self, log_file_name):
-        WriteFile.__init__(self, log_file_name)
 
     def write(self, msg):
         ts = WriteFile.timestamp()
@@ -34,14 +32,12 @@ class DelimFile(WriteFile):
 
     def write(self, l):
         ts = WriteFile.timestamp()
-        msg = self.delimiter.join([
-            self.correct_delim_field(e)
-            for e in l
-        ])
-        self.fh.write(f'{ts} {msg}')
+        corrected = ( self.correct_delim_field(e) for e in l )
+        msg = self.delimiter.join( corrected )
+        self.fh.write(msg)
 
     def correct_delim_field(self, e):
-        if self.delimiter in e :
+        if self.delimiter in e:
             return f'"{e}"'
         else:
             return e
