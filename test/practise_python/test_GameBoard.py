@@ -54,7 +54,7 @@ class GameBoardTests(unittest.TestCase):
 
     def test_set(self):
         g3x3 = GameBoard(3)
-        g3x3.set('A', 0, 'X')
+        g3x3.set(col='A', row=0, piece='X')
         self.assertEqual( [['X', ' ', ' '], [' ', ' ', ' '], [' ', ' ', ' ']], g3x3.board)
         g3x3.set('B', 2, 'Y')
         self.assertEqual([['X', ' ', ' '], [' ', ' ', ' '], [' ', 'Y', ' ']], g3x3.board)
@@ -62,7 +62,7 @@ class GameBoardTests(unittest.TestCase):
     def test_is_free(self):
         g3x3 = GameBoard(3)
         self.assertTrue(g3x3.is_free('A', 0))
-        g3x3.set('A', 0, 'X')
+        g3x3.set(col='A', row=0, piece='X')
         self.assertFalse(g3x3.is_free('A', 0))
 
     def test_valid_coords(self):
