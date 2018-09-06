@@ -31,7 +31,6 @@ class DelimFile(WriteFile):
         self.delimiter = delimiter
 
     def write(self, l):
-        ts = WriteFile.timestamp()
         corrected = ( self.correct_delim_field(e) for e in l )
         msg = self.delimiter.join( corrected )
         self.fh.write(msg)
