@@ -11,14 +11,13 @@ class C(A):
     def do_this(self):
         return 'doing this in C'
 
-
+      
 class D(B, C):
     pass
 
 
-
-
-
+  
+  
 class AA:
     pass
 
