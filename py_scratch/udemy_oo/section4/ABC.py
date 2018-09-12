@@ -21,7 +21,6 @@ class MyClass(GetterSetter):
 
 
 class MyClassAbstract(GetterSetter):
-
     def get_val(self):
         return self.val
 
