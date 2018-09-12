@@ -12,8 +12,11 @@ class C(A):
         return 'doing this in C'
 
 
-class D(B,C):
+class D(B, C):
     pass
+
+
+
 
 
 class AA:
