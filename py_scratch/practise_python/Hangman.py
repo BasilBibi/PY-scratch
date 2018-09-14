@@ -1,12 +1,47 @@
+from abc import ABC, abstractmethod
+import requests
+import json
+
+
+class Dictionary(ABC):
+    @abstractmethod
+    def lookup(self, word):
+        return
+
+    @abstractmethod
+    def extract_definition_from_result(self, lookup_result):
+        return
+
+
+class OnlineOxfordDictionary(Dictionary):
+    # for more information on how to install requests
+    # http://docs.python-requests.org/en/master/user/install/#install
+    _app_id = '9286dd2e'
+    _app_key = '8651b0907938b33bb76e99cb157288d2'
+    _language = 'en'
+    _base_url = f'https://od-api.oxforddictionaries.com:443/api/v1/entries/{_language}'
+    _success = 200
+
+    def lookup(self, word):
+        url = f'{OnlineOxfordDictionary._base_url}/{word.lower()}'
+        r = requests.get(url, headers={'app_id': OnlineOxfordDictionary._app_id, 'app_key': OnlineOxfordDictionary._app_key})
+
+        if r.status_code == self._success:
+            return self.extract_definition_from_result(r.text)
+        else:
+            return ['Oxford Online Dictionary did not respond']
+
+    def extract_definition_from_result(self, lookup_result):
+        j = json.loads(lookup_result)
+        senses = j['results'][0]['lexicalEntries'][0]['entries'][0]['senses']
+        definitions = [sense['short_definitions'][0] for sense in senses]
+        return definitions
+
+
 class ScrabbleWords:
 
     def __init__(self):
-        self.sowpods = self.get_sowpods()
-
-    @staticmethod
-    def get_file_path(file_name):
-        import os
-        return os.path.join(os.path.dirname(__file__), file_name)
+        self._sowpods = self.get_sowpods()
 
     @staticmethod
     def get_sowpods():
@@ -14,12 +49,17 @@ class ScrabbleWords:
         with open(sp, 'r') as fh:
             return [word.strip() for word in fh.readlines()]
 
+    @staticmethod
+    def get_file_path(file_name):
+        import os
+        return os.path.join(os.path.dirname(__file__), file_name)
+
     def get_random_word(self):
         import random
-        return random.choice(self.sowpods)
+        return random.choice(self._sowpods)
 
     def is_known_word(self, word):
-        return word in self.sowpods
+        return word in self._sowpods
 
 
 # Assumes that input letter is uppercase
@@ -48,7 +88,7 @@ class HangMan:
         if letter is None or letter == '':
             return False
         ascii = ord(letter)
-        return ascii >= 65 and ascii <= 95
+        return 65 <= ascii <= 95
 
     def incr_guess_count(self, letter):
         if letter not in self.used_letters and letter not in self.word:

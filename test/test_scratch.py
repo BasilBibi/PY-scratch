@@ -5,13 +5,11 @@ from test.TestBase import *
 
 class GeneralTests(unittest.TestCase):
 
-
     def test_find_longest_word_in_macbeth(self):
         macbeth = get_file_contents('Macbeth.txt')
         lines = macbeth.split()
         lines.sort(key=len, reverse=True)
         self.assertEqual('Waiting-Gentlewoman]', lines[0])
-
 
     def test_find_longest_word_in_macbeth_using_regex(self):
         macbeth = get_file_contents('Macbeth.txt').lower()

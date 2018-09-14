@@ -1,0 +1,81 @@
+{
+    "metadata": {
+        "provider": "Oxford University Press"
+    },
+    "results": [
+        {
+            "id": "pear",
+            "language": "en",
+            "lexicalEntries": [
+                {
+                    "entries": [
+                        {
+                            "etymologies": [
+                                "Old English pere, peru, of West Germanic origin; related to Dutch peer, from Latin pirum"
+                            ],
+                            "grammaticalFeatures": [
+                                {
+                                    "text": "Singular",
+                                    "type": "Number"
+                                }
+                            ],
+                            "homographNumber": "000",
+                            "senses": [
+                                {
+                                    "definitions": [
+                                        "a sweet yellowish- or brownish-green edible fruit that is typically narrow at the stalk and wider towards the base, with sweet, slightly gritty flesh."
+                                    ],
+                                    "domains": [
+                                        "Variety"
+                                    ],
+                                    "id": "m_en_gbus0758440.006",
+                                    "short_definitions": [
+                                        "sweet yellowish- or brownish-green edible fruit which is narrow at stalk"
+                                    ]
+                                },
+                                {
+                                    "definitions": [
+                                        "the Eurasian tree which bears the pear."
+                                    ],
+                                    "domains": [
+                                        "Plant"
+                                    ],
+                                    "id": "m_en_gbus0758440.010",
+                                    "notes": [
+                                        {
+                                            "text": "Genus Pyrus, family Rosaceae: several species and hybrids, in particular P. communis",
+                                            "type": "technicalNote"
+                                        }
+                                    ],
+                                    "short_definitions": [
+                                        "Eurasian tree which bears pear"
+                                    ],
+                                    "variantForms": [
+                                        {
+                                            "text": "pear tree"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "language": "en",
+                    "lexicalCategory": "Noun",
+                    "pronunciations": [
+                        {
+                            "audioFile": "http://audio.oxforddictionaries.com/en/mp3/pear_gb_1_8.mp3",
+                            "dialects": [
+                                "British English"
+                            ],
+                            "phoneticNotation": "IPA",
+                            "phoneticSpelling": "pɛː"
+                        }
+                    ],
+                    "text": "pear"
+                }
+            ],
+            "type": "headword",
+            "word": "pear"
+        }
+    ]
+}

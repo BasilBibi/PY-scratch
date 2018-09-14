@@ -18,6 +18,10 @@ class InheritanceDiamondTests(unittest.TestCase):
         d = D()
         self.assertEqual('doing this in C', d.do_this())
 
+    def test_mro_uses_BBB_despite_diamond(self):
+        ddd = DDD()
+        self.assertEqual('doing this in BBB as shown in mro', ddd.do_this())
+
     def test_compare_Python_3_mro_output(self):
         mro_output = get_class_names_in_mro(D)
         self.assertEqual(['D', 'B', 'C', 'A'], mro_output)

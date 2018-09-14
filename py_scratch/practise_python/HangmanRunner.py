@@ -1,6 +1,15 @@
-from py_scratch.practise_python.Hangman import HangMan,ScrabbleWords
+from py_scratch.practise_python.Hangman import HangMan,ScrabbleWords, OnlineOxfordDictionary
 
 clear_screen = '\033[H\033[J'
+
+oxford_dictionary = OnlineOxfordDictionary()
+
+
+def print_definitions(word):
+    print(f'\n{word} :')
+    print('\n'.join(oxford_dictionary.lookup(word)))
+    print('\n')
+
 
 while True:
     hangman = HangMan(ScrabbleWords())
@@ -13,10 +22,13 @@ while True:
             if hangman.is_game_over():
                 if hangman.has_won():
                     print(f'{hangman.get_current_game_state()} : {hangman.bad_guess_count}')
+                    word = ''.join(hangman.word)
+                    print_definitions(word)
                     print(f'\nYou win!')
                     break
                 else:
-                    print(''.join(hangman.word))
+                    word = ''.join(hangman.word)
+                    print_definitions(word)
                     print(f'\nYou lose ;( {hangman.bad_guess_count} bad guesses.')
                     break
         else:

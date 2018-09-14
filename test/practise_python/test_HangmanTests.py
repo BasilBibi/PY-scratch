@@ -2,11 +2,14 @@ import unittest
 from unittest.mock import MagicMock
 
 from py_scratch.practise_python.Hangman import *
+from test.TestBase import *
 
 scabble_words = ScrabbleWords.get_sowpods()
 mock_scrabble_words = MagicMock()
 mock_scrabble_words.get_random_word.side_effect = ['ABALONE']
 hangman = HangMan(mock_scrabble_words)
+
+oxford_pear_json = get_file_contents('Oxford_Pear.json')
 
 
 class HangmanTests(unittest.TestCase):
@@ -103,6 +106,12 @@ class HangmanTests(unittest.TestCase):
         self.assertTrue(hangman.bad_guess_count == 0)
         hangman.guess_letter('A')
         self.assertTrue(hangman.bad_guess_count == 0)
+
+    def test_Oxford_online_dictionary(self):
+        oxford = OnlineOxfordDictionary()
+        definitions = oxford.extract_definition_from_result( oxford_pear_json )
+        self.assertEqual( ["sweet yellowish- or brownish-green edible fruit which is narrow at stalk",
+                           "Eurasian tree which bears pear"], definitions )
 
 
 if __name__ == '__main__':
