@@ -107,12 +107,6 @@ class HangmanTests(unittest.TestCase):
         hangman.guess_letter('A')
         self.assertTrue(hangman.bad_guess_count == 0)
 
-    def test_Oxford_online_dictionary(self):
-        oxford = OnlineOxfordDictionary()
-        definitions = oxford.extract_definition_from_result( oxford_pear_json )
-        self.assertEqual( ["sweet yellowish- or brownish-green edible fruit which is narrow at stalk",
-                           "Eurasian tree which bears pear"], definitions )
-
 
 if __name__ == '__main__':
     unittest.main()

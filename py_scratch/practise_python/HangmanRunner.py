@@ -1,14 +1,15 @@
-from py_scratch.practise_python.Hangman import HangMan,ScrabbleWords, OnlineOxfordDictionary
+from py_scratch.practise_python.Hangman import HangMan,ScrabbleWords
+from py_scratch.practise_python.WordDictionary import LocalDictionary, OnlineOxfordDictionary
 
 clear_screen = '\033[H\033[J'
 
 oxford_dictionary = OnlineOxfordDictionary()
+local_dictionary = LocalDictionary('LocalDictionary.csv')
 
 
 def print_definitions(word):
     print(f'\n{word} :')
     print('\n'.join(oxford_dictionary.lookup(word)))
-    print('\n')
 
 
 while True:
@@ -24,12 +25,12 @@ while True:
                     print(f'{hangman.get_current_game_state()} : {hangman.bad_guess_count}')
                     word = ''.join(hangman.word)
                     print_definitions(word)
-                    print(f'\nYou win!')
+                    print(f'You win!')
                     break
                 else:
                     word = ''.join(hangman.word)
                     print_definitions(word)
-                    print(f'\nYou lose ;( {hangman.bad_guess_count} bad guesses.')
+                    print(f'You lose ;( {hangman.bad_guess_count} bad guesses.')
                     break
         else:
             print(f'{hangman.get_current_game_state()} : {hangman.bad_guess_count}\n')
