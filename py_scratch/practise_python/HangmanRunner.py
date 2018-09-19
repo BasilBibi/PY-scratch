@@ -1,10 +1,10 @@
 from py_scratch.practise_python.Hangman import HangMan,ScrabbleWords
-from py_scratch.practise_python.WordDictionary import LocalDictionary, OnlineOxfordDictionary
+from py_scratch.practise_python.WordDictionary import LocalWordDictionary, OxfordOnlineWordDictionary
 
 clear_screen = '\033[H\033[J'
 
-oxford_dictionary = OnlineOxfordDictionary()
-local_dictionary = LocalDictionary('LocalDictionary.csv')
+oxford_dictionary = OxfordOnlineWordDictionary()
+local_dictionary = LocalWordDictionary('LocalDictionary.csv')
 
 
 def print_definitions(word):
