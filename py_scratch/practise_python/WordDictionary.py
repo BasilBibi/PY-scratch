@@ -24,7 +24,7 @@ class OxfordOnlineWordDictionary(WordDictionary):
         r = requests.get(url, headers={'app_id': OxfordOnlineWordDictionary._app_id, 'app_key': OxfordOnlineWordDictionary._app_key})
 
         if r.status_code == self._success:
-            return self.extract_definition_from_result(r.text)
+            return self._extract_definition_from_result(r.text)
         elif r.status_code == self._word_not_found:
             return [f'Oxford Online Dictionary could not find {word}']
         else:

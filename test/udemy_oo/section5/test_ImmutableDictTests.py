@@ -18,6 +18,12 @@ class ImmutableDictTests(unittest.TestCase):
         del imd['a']
         self.assertEqual(1, imd['a'])
 
+    def test_cannot_add_a_new_kv(self):
+        imd = ImmutableDict([('a', 1)])
+        imd['z'] = 100
+        with self.assertRaises(KeyError):
+            imd['z']
+
 
 if __name__ == '__main__':
     unittest.main()
