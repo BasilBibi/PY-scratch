@@ -36,7 +36,7 @@ class LifoStackTests(unittest.TestCase):
         self.assertTrue(s.pop() == 2)
         self.assertTrue(s.pop() == 1)
 
-    def test_push(self):
+    def test_peek(self):
         s = LifoStack()
         s.push(1)
         self.assertTrue(s.peek() == 1)

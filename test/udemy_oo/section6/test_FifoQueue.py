@@ -11,7 +11,7 @@ class FifoQueueTests(unittest.TestCase):
 
     def test_can_construct_initialised(self):
         q = FifoQueue([1, 2, 3, 4, 5])
-        self.assertTrue(q == [1,2,3,4,5])
+        self.assertTrue(q == [1, 2, 3, 4, 5])
 
     def test_enqueue(self):
         q = FifoQueue()

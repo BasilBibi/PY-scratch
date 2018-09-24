@@ -1,4 +1,5 @@
 class FifoQueue(list):
+
     def enqueue(self, e):
         self.append(e)
 
