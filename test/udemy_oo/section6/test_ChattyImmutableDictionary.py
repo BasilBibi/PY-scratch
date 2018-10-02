@@ -1,5 +1,5 @@
 import unittest
-from py_scratch.udemy_oo.section6.ChattyImmutableDictionary import *
+from py_scratch.udemy_oo.section6.ChattyImmutableDictionary import DelItemError, SetItemError, ChattyImmutableDictionary
 
 
 class ChattyImmutableDictionaryTests(unittest.TestCase):
