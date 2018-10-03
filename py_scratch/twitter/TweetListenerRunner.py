@@ -1,8 +1,13 @@
+import logging
+
 from tweepy import Stream
 from tweepy import OAuthHandler
 
-from py_scratch.twitter.LoveAndHateTweetPrinter import LoveAndHateTweetPrinter
+from py_scratch.twitter.LoveAndHateListener import LoveAndHateListener
+from py_scratch.twitter.TweetWriter import LoveAndHateTweetStringWriter
 
+logging.basicConfig(level=logging.INFO,
+                    format="%(asctime)s:%(levelname)s:%(message)s")
 
 CONSUMER_API_KEY = 'i1uJqq2m07rocMK5x0UxfZjCt'
 API_SECRET_KEY = 'oUfnCvkFHhgEHOsoXNWUN9TIuMhCOyP50mKDBjtihKJDtGHxQI'
@@ -12,5 +17,9 @@ ACCESS_TOKEN_SECRET = 'PNp71qntFDdRDOk7C6XpAhJsKyMBu11Y7a3L6fm5MUOo0'
 auth = OAuthHandler(CONSUMER_API_KEY, API_SECRET_KEY)
 auth.set_access_token(ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
 
-twitterStream = Stream(auth, LoveAndHateTweetPrinter())
+listener = LoveAndHateListener(
+                LoveAndHateTweetStringWriter()
+           )
+
+twitterStream = Stream(auth, listener)
 twitterStream.filter(track=["love", "hate"])
