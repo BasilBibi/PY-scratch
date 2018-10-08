@@ -11,7 +11,6 @@ class TweetWriter(ABC):
 
 class LoveAndHateTweetStringWriter(TweetWriter):
 
-    __NOT_FOUND_DEFAULT = {'NA': 'NA'}
     __TEXT_PATH = jsonpath_expr = parse('$..text')
     __FULL_TEXT_PATH = jsonpath_expr = parse('$..full_text')
 
