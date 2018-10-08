@@ -69,6 +69,42 @@ extended_tweet = '''{
 }'''
 extended_tweet_json = json.loads( extended_tweet )
 
+multi_full_text = '''{
+    "full_text":"Top level full_text",
+    "created_at": "Thu May 10 17:41:57 +0000 2018",
+    "id_str": "994633657141813248",
+    "text": "Just another Extended Tweet hate more than 140 characters, generated as a love example, showing that [tru… https://t.co/U7Se4NM7Eu",
+    "display_text_range": [0, 140],
+    "truncated": true,
+    "user": {
+        "id_str": "944480690",
+        "screen_name": "FloodSocial"
+    },
+    "extended_tweet": {
+        "full_text": "FULL TEXT in extended_tweet",
+        "display_text_range": [0, 249],
+        "entities": {
+            "hashtags": [{
+                "text": "documentation",
+                "indices": [211, 225],
+                "full_text":"Another full_text"
+            }, {
+                "text": "parsingJSON",
+                "indices": [226, 238]
+            }, {
+                "text": "GeoTagged",
+                "indices": [239, 249]
+            }]
+        }
+
+    },
+    "entities": {
+        "hashtags": []
+    }
+}'''
+multi_full_text_json = json.loads( multi_full_text )
+
+
 class LoveAndHateTweetStringWriterTests(unittest.TestCase):
 
     def test_01_can_get_text_from_simple_tweet(self):
@@ -77,9 +113,9 @@ class LoveAndHateTweetStringWriterTests(unittest.TestCase):
                              simple_tweet_json)
                          )
 
-    def test_02_gets_nothing_for_extended_tweet_from_simple_tweet(self):
+    def test_02_gets_empty_string_for_extended_tweet_from_simple_tweet(self):
         self.assertEqual('',
-                         LoveAndHateTweetStringWriter._get_extended_tweet(
+                         LoveAndHateTweetStringWriter._get_full_text(
                              simple_tweet_json)
                          )
 
@@ -91,21 +127,21 @@ class LoveAndHateTweetStringWriterTests(unittest.TestCase):
 
     def test_04_extended_tweet_from_extended_tweet(self):
         self.assertEqual('''Just another Extended Tweet hate more than 140 characters, generated as a love example, showing that [truncated: true] and the presence of an extended_tweet object with complete text and entities #documentation #parsingJSON #GeoTagged https://t.co/e9yhQTJSIA''',
-                         LoveAndHateTweetStringWriter._get_extended_tweet(
+                         LoveAndHateTweetStringWriter._get_full_text(
                              extended_tweet_json)
                          )
 
     def test_05_makes_output_string_for_simple_tweet(self):
         lht = LoveAndHateTweetStringWriter()
         self.assertEqual( '''love: 1, *, hate: 1, *
-text           : 1/ Today we hate our love for the future of the Twitter API platform!
-extended_tweet : ''', lht.on_data(simple_tweet))
+text      : 1/ Today we hate our love for the future of the Twitter API platform!
+full_text : ''', lht.on_data(simple_tweet))
 
     def test_06_makes_output_string_for_simple_tweet(self):
         lht = LoveAndHateTweetStringWriter()
         self.assertEqual( '''love: 1, *, hate: 1, *
-text           : Just another Extended Tweet hate more than 140 characters, generated as a love example, showing that [tru… https://t.co/U7Se4NM7Eu
-extended_tweet : Just another Extended Tweet hate more than 140 characters, generated as a love example, showing that [truncated: true] and the presence of an extended_tweet object with complete text and entities #documentation #parsingJSON #GeoTagged https://t.co/e9yhQTJSIA''',
+text      : Just another Extended Tweet hate more than 140 characters, generated as a love example, showing that [tru… https://t.co/U7Se4NM7Eu
+full_text : Just another Extended Tweet hate more than 140 characters, generated as a love example, showing that [truncated: true] and the presence of an extended_tweet object with complete text and entities #documentation #parsingJSON #GeoTagged https://t.co/e9yhQTJSIA''',
                           lht.on_data(extended_tweet))
 
     def test_07_updates_love_and_hate_counts_for_simple_tweet(self):
@@ -119,6 +155,10 @@ extended_tweet : Just another Extended Tweet hate more than 140 characters, gene
         lht.on_data(extended_tweet)
         self.assertEqual(1, lht.get_love_count())
         self.assertEqual(1, lht.get_hate_count())
+
+    def test_09_multi_full_text_demo(self):
+        self.assertEqual( 'Top level full_text FULL TEXT in extended_tweet Another full_text',
+                          LoveAndHateTweetStringWriter._get_full_text(multi_full_text_json))
 
 
 if __name__ == '__main__':

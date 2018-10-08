@@ -22,4 +22,4 @@ listener = LoveAndHateListener(
            )
 
 twitterStream = Stream(auth, listener)
-twitterStream.filter(track=["love", "hate"])
+twitterStream.filter(track=listener.TERMS)
