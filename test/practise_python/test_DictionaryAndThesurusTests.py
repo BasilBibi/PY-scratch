@@ -34,7 +34,7 @@ class HangmanTests(unittest.TestCase):
     def test_OnlineOxford_mocked_good_lookup(self):
         mock_requests = MagicMock()
         mock_result = MagicMock()
-        mock_result.status_code = 20
+        mock_result.status_code = 200
         mock_result.text = onlineoxford_pear
         mock_requests.get.side_effect = [mock_result]
         oxford = OxfordOnlineWordDictionary(mock_requests)
