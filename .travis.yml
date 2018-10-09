@@ -9,7 +9,7 @@ before_install:
   - conda config --set always_yes yes --set changeps1 no --set show_channel_urls true
   - conda update conda
   - conda config --add channels conda-forge --force
-  - conda create --name TEST python=3.6 phantomjs --file requirements.txt --file requirements-dev.txt
+  - conda create --name TEST python=3.6 phantomjs #--file requirements.txt --file requirements-dev.txt
   - source activate TEST
   - pip install --upgrade jsonpath-ng
   - pip install tweepy
