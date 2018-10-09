@@ -2,31 +2,33 @@ from abc import ABC, abstractmethod
 
 
 class GetterSetter(ABC):
+    def __init__(self):
+        self._val = None
 
     @abstractmethod
     def set_val(self, i):
-        return
+        pass
 
     @abstractmethod
     def get_val(self):
-        return
+        pass
 
 
 class MyClass(GetterSetter):
     def set_val(self, i):
-        self.val = i
+        self._val = i
 
     def get_val(self):
-        return self.val
+        return self._val
 
 
 class MyClassAbstract(GetterSetter):
     def get_val(self):
-        return self.val
+        return self._val
 
 
 class MyClassFixed(MyClassAbstract):
     def set_val(self, i):
-        self.val = i
+        self._val = i
 
 

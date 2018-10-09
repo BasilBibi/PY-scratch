@@ -33,7 +33,7 @@ class ImmutableSetTests(unittest.TestCase):
         s.remove(1)
         self.assertTrue( 1 in s)
 
-    def test_remove_does_not_change_set(self):
+    def test_update_does_not_change_set(self):
         s = ImmutableSet((1, 2, 3, 4))
         s.update(5)
         self.assertFalse( 5 in s)

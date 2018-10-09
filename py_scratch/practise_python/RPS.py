@@ -7,16 +7,6 @@ result_lookup = { v: k for k, v in rps_tokens.items() }
 result_lookup.update({-1: 'draw'})
 
 
-def get_player_choice(player_name):
-    while True:
-        c = input(f'{player_name} : ').lower()
-        if is_valid_choice(c):
-            return rps_tokens[c]
-        else:
-            print( make_error_message(c, player_name) )
-            continue
-
-
 def is_valid_choice(c):
     return c != 'draw' and c in rps_tokens
 
