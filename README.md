@@ -12,3 +12,10 @@ e.g. ~/Documents/dev/source/PY-scratch
 Then run unittest in discover mode with verbose switch :
 $ python -m unittest discover -v
 ```
+
+To run coverage reports :
+
+```bash
+$ coverage run -m unittest 
+$ coverage report -m
+```

@@ -1,0 +1,10 @@
+[run]
+branch = True
+
+[report]
+exclude_lines = 
+    pragma: no cover
+    @abstract
+omit = 
+    */__init__.py
+    */test_*

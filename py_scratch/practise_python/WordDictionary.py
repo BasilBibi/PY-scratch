@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 import requests
+import json
 from jsonpath_ng import parse
 
 
@@ -12,6 +13,7 @@ class WordDictionary(ABC):
 class OxfordOnlineWordDictionary(WordDictionary):
     _app_id = '9286dd2e'
     _app_key = '8651b0907938b33bb76e99cb157288d2'
+    _headers = {'app_id': _app_id, 'app_key': _app_key}
     _language = 'en'
     _base_url = f'https://od-api.oxforddictionaries.com:443/api/v1/entries/{_language}'
     _success = 200
@@ -20,12 +22,16 @@ class OxfordOnlineWordDictionary(WordDictionary):
     __DEF_PATH = parse('$..definitions')
     __ETYM_PATH = parse('$..etymologies')
 
+    def __init__(self, req=requests):
+        self._req = req
+
     def lookup(self, word):
-        url = f'{OxfordOnlineWordDictionary._base_url}/{word.lower()}'
-        r = requests.get(url, headers={'app_id': OxfordOnlineWordDictionary._app_id, 'app_key': OxfordOnlineWordDictionary._app_key})
+        url = f'{self._base_url}/{word.lower()}'
+        r = self._req.get(url, headers=self._headers)
 
         if r.status_code == self._success:
-            return self._extract_results(r.text)
+            j = json.loads(r.text)
+            return self._extract_results(j)
         elif r.status_code == self._word_not_found:
             return [f'Oxford Online Dictionary could not find {word}']
         else:
