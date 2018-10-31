@@ -6,6 +6,8 @@ from tweepy.streaming import StreamListener
 # The on_* methods are the way Twitter calls back onto our code
 class LoveAndHateListener(StreamListener):
 
+    TERMS = ["love", "hate"]
+
     def __init__(self, tweet_writer, tweet_count_limit=10):
         self.__tweet_writer = tweet_writer
         self.__tweet_count = 1
