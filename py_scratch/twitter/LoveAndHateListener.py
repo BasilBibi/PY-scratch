@@ -9,6 +9,7 @@ class LoveAndHateListener(StreamListener):
     TERMS = ["love", "hate"]
 
     def __init__(self, tweet_writer, tweet_count_limit=10):
+        super().__init__()
         self.__tweet_writer = tweet_writer
         self.__tweet_count = 1
         self.__tweet_count_limit = tweet_count_limit

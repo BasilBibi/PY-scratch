@@ -45,29 +45,29 @@ class LoveAndHateTweetStringWriter(TweetWriter):
         matches = [match.value for match in LoveAndHateTweetStringWriter.__FULL_TEXT_PATH.find(j)]
         return ' '.join(matches)
 
-    def _make_output_string(self, text, text_words, extended_tweet, extended_tweet_words):
+    def _make_output_string(self, text, text_words, full_text, full_text_words):
         has_love = has_hate = '_'
-        if self._is_love(text_words, extended_tweet_words):
+        if self._is_love(text_words, full_text_words):
             has_love = '*'
-        if self._is_hate(text_words, extended_tweet_words):
+        if self._is_hate(text_words, full_text_words):
             has_hate = '*'
 
         return (f'love: {self.__love_count}, {has_love}, hate: {self.__hate_count}, {has_hate}\n'
                 f'text      : {text}\n'
-                f'full_text : {extended_tweet}')
+                f'full_text : {full_text}')
 
-    def _update_stats(self, text_words, extended_tweet_words):
-        if self._is_love(text_words, extended_tweet_words):
+    def _update_stats(self, text_words, full_text_words):
+        if self._is_love(text_words, full_text_words):
             self.__love_count += 1
-        if self._is_hate(text_words, extended_tweet_words):
+        if self._is_hate(text_words, full_text_words):
             self.__hate_count += 1
 
     @staticmethod
-    def _is_love(text_words, extended_tweet_words):
+    def _is_love(text_words, full_text_words):
         return 'love' in text_words \
-               or 'love' in extended_tweet_words
+               or 'love' in full_text_words
 
     @staticmethod
-    def _is_hate(text_words, extended_tweet_words):
+    def _is_hate(text_words, full_text_words):
         return 'hate' in text_words \
-               or 'hate' in extended_tweet_words
+               or 'hate' in full_text_words
