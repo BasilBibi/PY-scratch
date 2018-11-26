@@ -16,7 +16,8 @@ before_install:
 
 script:
   - if [[ $TRAVIS_PYTHON_VERSION == '3.6' ]]; then python -m unittest discover; fi
-email:
+notifications:
+  email:
     recipients:
       - basilbibi@hotmail.com
     on_success: always
