@@ -132,13 +132,13 @@ class LoveAndHateTweetStringWriterTests(unittest.TestCase):
                          )
 
     def test_05_makes_output_string_for_simple_tweet(self):
-        lht = LoveAndHateTweetStringWriter()
+        lht = LoveAndHateTweetStringWriter(verbose=True)
         self.assertEqual( '''love: 1, *, hate: 1, *
 text      : 1/ Today we hate our love for the future of the Twitter API platform!
 full_text : ''', lht.on_data(simple_tweet))
 
     def test_06_makes_output_string_for_simple_tweet(self):
-        lht = LoveAndHateTweetStringWriter()
+        lht = LoveAndHateTweetStringWriter(verbose=True)
         self.assertEqual( '''love: 1, *, hate: 1, *
 text      : Just another Extended Tweet hate more than 140 characters, generated as a love example, showing that [tru… https://t.co/U7Se4NM7Eu
 full_text : Just another Extended Tweet hate more than 140 characters, generated as a love example, showing that [truncated: true] and the presence of an extended_tweet object with complete text and entities #documentation #parsingJSON #GeoTagged https://t.co/e9yhQTJSIA''',

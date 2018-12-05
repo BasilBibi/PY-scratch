@@ -24,10 +24,10 @@ class LoveAndHateListener(StreamListener):
         logging.info(data)
         writer_output = self.__tweet_writer.on_data(data)
         if writer_output:
-            print(f'{writer_output}\n')
+            print(f'{writer_output}')
 
-        print(f'Number of tweets processed : {self.__tweet_count}\n'
-              '------------------------------------')
+        logging.info(f'Number of tweets processed : {self.__tweet_count}\n'
+                     '------------------------------------')
         return not self._is_count_limit_reached()
 
     def _is_count_limit_reached(self):
