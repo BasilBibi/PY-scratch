@@ -1,7 +1,5 @@
 This is a scratch project for general messing around and experimentation.
 
-HI BILL !
-
 Also used extensively for 5YP developer interships.
 
 To run all unit tests do the following :
