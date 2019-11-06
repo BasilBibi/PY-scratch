@@ -8,6 +8,7 @@ class A:
         self._priv_inst_var = iv
         self.__mangled_inst_var = iv
 
+
 class B(A):
     another_clazz_var = 100
     _another_priv_clazz_var = 100

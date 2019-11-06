@@ -1,4 +1,4 @@
-from py_scratch.practise_python.Hangman import HangMan,ScrabbleWords
+from py_scratch.practise_python.Hangman import HangMan, ScrabbleWords
 from py_scratch.practise_python.WordDictionary import LocalWordDictionary, OxfordOnlineWordDictionary
 
 clear_screen = '\033[H\033[J'

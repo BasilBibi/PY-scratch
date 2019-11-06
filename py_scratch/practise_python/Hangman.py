@@ -22,8 +22,10 @@ class ScrabbleWords:
         return word in self._sowpods
 
 
-# Assumes that input letter is uppercase
 class HangMan:
+    """
+    Assumes that the input letter is uppercase
+    """
 
     def __init__(self, scrabble_words, bad_guess_limit=10):
         self.word = list(scrabble_words.get_random_word())
