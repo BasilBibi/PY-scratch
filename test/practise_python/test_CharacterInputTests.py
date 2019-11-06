@@ -19,12 +19,12 @@ class CalculateYearOfCentenaryTests(unittest.TestCase):
     def test_for_negative_value_age(self):
         with self.assertRaises(Exception) as context:
             calculate_year_of_centenary(current_year=2019, current_age=-20)
-            self.assertTrue('Bad input -20 < 0' == context.exception)
+        self.assertEqual('Bad input -20 < 0', str(context.exception))
 
     def test_for_negative_value_year(self):
         with self.assertRaises(Exception) as context:
             calculate_year_of_centenary(current_year=-2019, current_age=20)
-            self.assertTrue('Bad input -20 < 0' == context.exception)
+        self.assertEqual('Bad input -2019 < 0',  str(context.exception))
 
 
 if __name__ == '__main__':
