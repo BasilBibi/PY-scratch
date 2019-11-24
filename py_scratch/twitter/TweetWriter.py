@@ -39,7 +39,11 @@ class LoveAndHateTweetStringWriter(TweetWriter):
 
     @staticmethod
     def _get_text(j):
-        return [match.value for match in LoveAndHateTweetStringWriter.__TEXT_PATH.find(j)][0]
+        textMatches = [match.value for match in LoveAndHateTweetStringWriter.__TEXT_PATH.find(j)]
+        if len(textMatches) > 0:
+            return textMatches[0]
+        else:
+            return "nothing found"
 
     @staticmethod
     def _get_full_text(j):
