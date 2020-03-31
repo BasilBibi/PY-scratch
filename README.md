@@ -1,6 +1,6 @@
 This is a scratch project for general messing around and experimentation.
 
-Also used extensively for 5YP developer interships.
+Also used extensively for 5YP developer internships.
 
 To run all unit tests do the following :
 

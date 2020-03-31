@@ -1,5 +1,6 @@
 from math import inf
 
+
 class BoundedSet:
     def __init__(self, lower=-inf, upper=inf):
         self.__lower = lower
