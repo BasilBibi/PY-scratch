@@ -1,7 +1,7 @@
 import unittest
 from py_scratch.hackerrank.Rangoli import make_middle_line, make_line_sub_lists, make_rangoli
 
-
+@unittest.skip
 class RangoliTests(unittest.TestCase):
 
     def test_00_make_middle_line_1(self):
