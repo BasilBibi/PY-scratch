@@ -23,6 +23,5 @@ notifications:
   email:
     recipients:
       - basilbibi@hotmail.com
-      - billlanyon@me.com
     on_success: always
     on_failure: always
